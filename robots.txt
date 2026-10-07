@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://aledcanova.github.io/homologacao-sentenca-estrangeira/sitemap.xml

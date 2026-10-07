@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="no-referrer">
+<title>Diagnóstico: sua sentença estrangeira precisa de homologação?</title>
+<meta name="description" content="Responda perguntas objetivas sobre a decisão proferida no exterior e veja, na hora, se ela precisa ser homologada no STJ ou pode ser averbada direto no cartório.">
+<link rel="canonical" href="https://aledcanova.github.io/homologacao-sentenca-estrangeira/diagnostico.html">
+<meta property="og:title" content="Diagnóstico: sua sentença estrangeira precisa de homologação?">
+<meta property="og:description" content="Responda perguntas objetivas sobre a decisão proferida no exterior e veja, na hora, se ela precisa ser homologada no STJ ou pode ser averbada direto no cartório.">
+<meta property="og:locale" content="pt_BR">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230f2a43'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='17' fill='%23fff' text-anchor='middle'%3EH%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Homologação de Sentença Estrangeira, página inicial">
+      <span class="brand-mark" aria-hidden="true">H</span>
+      <span><strong>Homologação de Sentença Estrangeira</strong><small>Divórcio · Guarda · Pensão · Partilha</small></span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav class="nav" id="nav" aria-label="Principal">
+      <a href="homologacao.html">Como funciona</a>
+      <a href="artigos.html">Artigos</a>
+      <a href="perguntas.html">Perguntas</a>
+      <a href="contato.html">Contato</a>
+      <a class="cta" href="diagnostico.html">Iniciar diagnóstico</a>
+    </nav>
+  </div>
+</header>
+<main id="conteudo">
+
+<section class="wizard">
+  <div class="wrap narrow">
+    <h1 class="sr-only">Diagnóstico de homologação de sentença estrangeira</h1>
+    <noscript><div class="note warn"><p>O diagnóstico precisa de JavaScript ativado. Se preferir, escreva para <a href="mailto:alexandre@dickelcanova.com">alexandre@dickelcanova.com</a>.</p></div></noscript>
+
+    <div class="wz-top" id="wz-top">
+      <progress id="wz-progress" max="100" value="0" aria-label="Progresso do diagnóstico"></progress>
+      <span class="wz-count" id="wz-count" aria-live="polite"></span>
+    </div>
+
+    <div class="wz-stage" id="wz-stage"></div>
+
+    <!-- Resultado -->
+    <div class="wz-step mapa" id="wz-result" hidden>
+      <div class="verdict" id="verdict">
+        <span class="pill">Resultado preliminar</span>
+        <h2 id="verdict-title" tabindex="-1"></h2>
+        <p id="verdict-text"></p>
+      </div>
+      <div id="mapa"></div>
+      <p class="muted">Classificação informativa, feita somente com as suas respostas. Não é consulta jurídica nem promessa de resultado. A definição da medida depende do exame da decisão estrangeira e dos documentos por advogado.</p>
+
+      <div class="next no-print" id="next">
+        <h3>Próximo passo</h3>
+        <p id="next-text">Envie seus dados e os documentos que tiver. Em seguida você vê a proposta de honorários e pode contratar pelo próprio site, ou falar com o advogado.</p>
+        <div class="btns">
+          <button class="btn" type="button" id="abrir-envio">Iniciar a homologação</button>
+          <button class="btn ghost" type="button" id="imprimir">Imprimir o resultado</button>
+          <button class="btn link" type="button" id="refazer">Refazer</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Passo 1: dados e documentos (enviado por diagnostico.js ao endereço de formulários definido em config.json) -->
+    <div class="wz-step" id="wz-envio" hidden>
+      <p class="wz-section">Passo 1 de 3 · Dados e documentos</p>
+      <h2 class="wz-q" id="envio-title" tabindex="-1">Seus dados e documentos</h2>
+      <p class="wz-help">As respostas do diagnóstico seguem junto. Os campos marcados como opcionais podem ficar em branco.</p>
+      <form class="form" id="caso" name="caso" method="POST" action="/" enctype="multipart/form-data" data-netlify="true" netlify-honeypot="site" novalidate>
+        <input type="hidden" name="form-name" value="caso">
+        <input type="hidden" name="protocolo" id="f-protocolo">
+        <input type="hidden" name="resultado_codigo" id="f-codigo">
+        <input type="hidden" name="resultado" id="f-resultado">
+        <input type="hidden" name="respostas" id="f-respostas">
+        <input type="hidden" name="respostas_json" id="f-json">
+        <input type="hidden" name="pontos_json" id="f-pontos">
+        <p class="hp" aria-hidden="true"><label>Não preencha este campo <input name="site" tabindex="-1" autocomplete="off"></label></p>
+
+        <div class="field">
+          <label for="f-nome">Nome completo</label>
+          <input type="text" id="f-nome" name="nome" autocomplete="name" required aria-describedby="e-nome">
+          <p class="err" id="e-nome" hidden>Informe o seu nome completo.</p>
+        </div>
+        <div class="field">
+          <label for="f-email">E-mail</label>
+          <input type="email" id="f-email" name="email" autocomplete="email" inputmode="email" required aria-describedby="e-email">
+          <p class="err" id="e-email" hidden>Informe um e-mail válido. É por ele que você recebe o contrato e a orientação.</p>
+        </div>
+        <div class="field">
+          <label for="f-tel">Telefone, com código do país <span class="opt">(opcional)</span></label>
+          <input type="tel" id="f-tel" name="telefone" autocomplete="tel" inputmode="tel">
+        </div>
+        <div class="row2">
+          <div class="field">
+            <label for="f-pdec">País da decisão</label>
+            <input type="text" id="f-pdec" name="pais_decisao" autocomplete="off" required aria-describedby="h-pdec e-pdec">
+            <p class="hint" id="h-pdec">Se foi nos Estados Unidos, indique também o estado.</p>
+            <p class="err" id="e-pdec" hidden>Informe o país em que a decisão foi proferida.</p>
+          </div>
+          <div class="field">
+            <label for="f-pres">País onde você mora</label>
+            <input type="text" id="f-pres" name="pais_residencia" autocomplete="country-name" required aria-describedby="e-pres">
+            <p class="err" id="e-pres" hidden>Informe o país onde você mora.</p>
+          </div>
+        </div>
+
+        <fieldset>
+          <legend>Documentos <span class="opt">(opcional nesta etapa)</span></legend>
+          <p class="hint" id="h-arq">PDF ou foto legível, no idioma original; a tradução não é necessária agora. Até 8 MB somando os três arquivos. O que faltar pode ser enviado depois, por e-mail. Envie só o necessário: esses documentos costumam trazer dados de outras pessoas, inclusive de filhos.</p>
+          <div class="field">
+            <label for="f-sentenca">Decisão estrangeira (sentença e acordo, se houver)</label>
+            <input type="file" id="f-sentenca" name="arquivo_sentenca" accept=".pdf,.jpg,.jpeg,.png,.heic,application/pdf,image/*" aria-describedby="h-arq e-arq">
+          </div>
+          <div class="field">
+            <label for="f-definitiva">Documento que mostra que a decisão é definitiva</label>
+            <input type="file" id="f-definitiva" name="arquivo_definitiva" accept=".pdf,.jpg,.jpeg,.png,.heic,application/pdf,image/*" aria-describedby="h-arq e-arq">
+          </div>
+          <div class="field">
+            <label for="f-casamento">Certidão de casamento brasileira</label>
+            <input type="file" id="f-casamento" name="arquivo_casamento" accept=".pdf,.jpg,.jpeg,.png,.heic,application/pdf,image/*" aria-describedby="h-arq e-arq">
+          </div>
+          <p class="err" id="e-arq" hidden></p>
+        </fieldset>
+
+        <div class="field">
+          <label for="f-msg">Algo que queira acrescentar <span class="opt">(opcional)</span></label>
+          <textarea id="f-msg" name="mensagem" rows="3" maxlength="1500"></textarea>
+        </div>
+
+        <label class="check">
+          <input type="checkbox" name="consentimento_tratamento" id="f-c1" value="sim" required aria-describedby="e-c1">
+          <span>Li a <a href="privacidade.html" target="_blank" rel="noopener">Política de Privacidade</a> e os <a href="termos.html" target="_blank" rel="noopener">Termos de Uso</a> e solicito a proposta de honorários para o meu caso, com o tratamento dos dados e documentos que estou enviando para essa finalidade.</span>
+        </label>
+        <p class="err" id="e-c1" hidden>É preciso marcar esta opção para enviar.</p>
+        <label class="check">
+          <input type="checkbox" name="consentimento_transferencia" id="f-c2" value="sim" required aria-describedby="e-c2">
+          <span><strong>Transferência internacional.</strong> Estou ciente de que os dados e arquivos deste formulário ficam armazenados em serviço de nuvem do Google, que mantém servidores nos Estados Unidos e em outros países, e são tratados no Brasil, e consinto com essa transferência.</span>
+        </label>
+        <p class="err" id="e-c2" hidden>É preciso marcar esta opção para enviar.</p>
+
+        <p class="err" id="e-envio" role="alert" hidden></p>
+        <div class="wz-nav">
+          <button class="btn link" type="button" id="voltar-resultado">← Voltar ao resultado</button>
+          <button class="btn" type="submit" id="enviar">Enviar e ver a proposta</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Passo 2: proposta (o preço só aparece aqui, a quem enviou os dados e pediu a proposta) -->
+    <div class="wz-step" id="wz-proposta" hidden>
+      <p class="wz-section">Passo 2 de 3 · Proposta</p>
+      <h2 class="wz-q" id="proposta-title" tabindex="-1">Como você quer seguir?</h2>
+      <p class="wz-help">Dados recebidos. Protocolo <strong class="prot"></strong>. Esta proposta é individual e vale para este protocolo.</p>
+      <p class="note" id="nota-so-analise" hidden>Pelo resultado do diagnóstico, o alcance do pedido no seu caso ainda precisa ser definido com os documentos. Por isso a contratação começa pela consulta de viabilidade.</p>
+      <p class="note" id="nota-cartorio" hidden>Pelo resultado do diagnóstico, a averbação pode ser feita por você, direto no cartório, sem advogado. A consulta abaixo é opcional, para quem quer a conferência dos documentos antes.</p>
+      <div class="offers">
+        <div class="card offer" id="offer-procedimento">
+          <h3>Homologação completa</h3>
+          <p class="price">R$ 10.000</p>
+          <p class="muted">Entrada de R$ 4.000 agora e duas parcelas de R$ 3.000: uma no protocolo do pedido no STJ e outra na publicação da decisão do tribunal.</p>
+          <ul>
+            <li>Consulta de viabilidade incluída</li>
+            <li>Petição ao STJ e acompanhamento até a decisão e a carta de sentença</li>
+            <li>Orientação sobre apostila, tradução juramentada e averbação no cartório</li>
+            <li>O advogado revisa o caso em até 24 horas; se não confirmar, o valor pago é devolvido integralmente</li>
+          </ul>
+          <p class="muted">Se a outra parte não assinar a declaração de concordância e o tribunal determinar a citação, há um adicional de R$ 4.000, devido somente nessa hipótese.</p>
+          <button class="btn" type="button" data-produto="procedimento">Iniciar o processo de homologação</button>
+        </div>
+        <div class="card offer">
+          <h3>Consulta de viabilidade</h3>
+          <p class="price">R$ 600</p>
+          <p class="muted">Pagamento único. O valor é abatido se você contratar a homologação completa em até 30 dias.</p>
+          <ul>
+            <li>Exame da decisão estrangeira e dos documentos por advogado</li>
+            <li>Orientação inicial por escrito em até 30 minutos</li>
+            <li>Caminho indicado (homologação ou averbação direta), pendências, documentos, etapas e estimativa das despesas</li>
+          </ul>
+          <button class="btn ghost" type="button" data-produto="analise">Contratar a consulta</button>
+        </div>
+      </div>
+      <p class="muted">Os valores são de honorários advocatícios. Custas do tribunal, apostilas, tradução juramentada, certidões e despesas de cartório são pagas por você diretamente a quem presta esses serviços, e são estimadas na consulta.</p>
+      <p><button class="btn link" type="button" id="abrir-falar">ou falar com o advogado antes de decidir</button></p>
+    </div>
+
+    <!-- Passo 3: contrato e aceite -->
+    <div class="wz-step" id="wz-contrato" hidden>
+      <p class="wz-section">Passo 3 de 3 · Contrato</p>
+      <h2 class="wz-q" id="contrato-title" tabindex="-1">Leia e aceite o contrato</h2>
+      <p class="wz-help">Protocolo <strong class="prot"></strong>. Uma cópia do contrato aceito é enviada ao seu e-mail.</p>
+
+      <div class="contract" id="ct-analise" tabindex="0" role="region" aria-label="Contrato de consulta de viabilidade" hidden>
+        <h3>Contrato de prestação de serviços advocatícios: consulta jurídica de viabilidade</h3>
+        <p><strong>Contratado:</strong> Alexandre Dickel Canova, advogado, OAB/RS 127.163, Porto Alegre/RS. <strong>Contratante:</strong> a pessoa identificada no formulário deste protocolo.</p>
+        <p><strong>1. Objeto.</strong> Exame da decisão estrangeira e dos demais documentos apresentados pelo Contratante e consulta jurídica, com orientação por escrito sobre a necessidade e a viabilidade da homologação no Superior Tribunal de Justiça, a via cabível (homologação ou averbação direta em cartório), as pendências, os documentos a providenciar, as etapas e a estimativa das despesas com custas, apostila e tradução.</p>
+        <p><strong>2. Prazo e forma.</strong> A orientação inicial é enviada por e-mail em até 30 minutos, contados da confirmação do pagamento e do recebimento de cópia legível da decisão estrangeira. Ela é preparada com apoio de ferramentas automatizadas, inclusive de inteligência artificial, a partir das informações e dos documentos enviados. Em seguida o Contratado a revisa pessoalmente e, havendo correção ou complemento, comunica o Contratante por e-mail. O Contratante pode pedir, a qualquer momento, que a orientação seja refeita diretamente pelo advogado, sem custo adicional.</p>
+        <p><strong>3. Honorários.</strong> R$ 600, em pagamento único. Se o Contratante contratar a homologação completa em até 30 dias do envio da orientação, esse valor é abatido dos honorários correspondentes.</p>
+        <p><strong>4. Fora do objeto.</strong> Tradução de documentos, obtenção de documentos e certidões no exterior ou no Brasil, atos perante cartórios e o ajuizamento do pedido de homologação.</p>
+        <p><strong>5. Desistência e devolução.</strong> O Contratante pode desistir antes do envio da orientação, com devolução integral do valor pago em até 5 dias úteis. O Contratado devolve integralmente o valor, no mesmo prazo, se constatar impedimento ou conflito de interesses, ou se a cópia da decisão estrangeira não for apresentada em 30 dias.</p>
+        <p><strong>6. Natureza.</strong> A orientação é elaborada com base nas informações e nos documentos apresentados, que são examinados no idioma em que estiverem, e não garante o resultado de processo futuro, que depende de decisão do Superior Tribunal de Justiça.</p>
+        <p><strong>7. Sigilo, dados pessoais e tecnologia.</strong> As informações são protegidas pelo sigilo profissional e tratadas conforme a Política de Privacidade do site. O Contratado responde pela orientação, inclusive pela parte preparada com ferramentas automatizadas. O Contratante não deve tomar medida irreversível com base na orientação inicial antes de receber a confirmação da revisão.</p>
+        <p><strong>8. Aceite eletrônico.</strong> As partes admitem como válida a contratação por aceite eletrônico neste site, com registro de data, hora e dados do Contratante (Medida Provisória nº 2.200-2/2001, art. 10, § 2º).</p>
+        <p><strong>9. Foro.</strong> O do domicílio do Contratante no Brasil. Se o Contratante residir no exterior, o de Porto Alegre/RS, sem prejuízo dos direitos que a lei lhe assegure.</p>
+        <p class="muted">Versão 2026-10-06.</p>
+      </div>
+
+      <div class="contract" id="ct-procedimento" tabindex="0" role="region" aria-label="Contrato de homologação completa" hidden>
+        <h3>Contrato de prestação de serviços advocatícios: homologação de sentença estrangeira de divórcio</h3>
+        <p><strong>Contratado:</strong> Alexandre Dickel Canova, advogado, OAB/RS 127.163, Porto Alegre/RS. <strong>Contratante:</strong> a pessoa identificada no formulário deste protocolo.</p>
+        <p><strong>1. Objeto.</strong> Consulta de viabilidade e, confirmada esta, propositura e acompanhamento, perante o Superior Tribunal de Justiça, do pedido de homologação da decisão estrangeira de divórcio indicada pelo Contratante (Código de Processo Civil, arts. 960 a 965), compreendendo: análise documental; orientação sobre apostila e tradução juramentada; elaboração e protocolo da petição inicial; cumprimento de diligências; manifestação sobre contestação e sobre o parecer do Ministério Público; acompanhamento até a decisão do tribunal sobre o pedido; requerimento da carta de sentença; orientação para a averbação no registro civil.</p>
+        <p><strong>2. Confirmação pelo advogado.</strong> O Contratado examina o caso em até 24 horas após a confirmação do pagamento da entrada e comunica por e-mail se confirma a contratação. Se não confirmar, por inviabilidade do pedido, conflito de interesses ou documentação insuficiente, o contrato se desfaz e o valor pago é devolvido integralmente em até 5 dias úteis. Se o Contratado não se manifestar nesse prazo, o Contratante pode cancelar a contratação, com a mesma devolução.</p>
+        <p><strong>3. Honorários.</strong> R$ 10.000, assim pagos: R$ 4.000 no aceite deste contrato; R$ 3.000 no protocolo do pedido no Superior Tribunal de Justiça; R$ 3.000 na publicação da decisão do tribunal sobre o pedido de homologação.</p>
+        <p><strong>4. Citação da outra parte.</strong> Se não for apresentada declaração de anuência da outra parte e o tribunal determinar a citação, é devido o adicional de R$ 4.000, na data dessa determinação. O adicional remunera a instrução da carta rogatória ou de ordem e a manifestação sobre eventual contestação.</p>
+        <p><strong>5. Encerramento antecipado.</strong> Se o processo for extinto por fato não imputável ao Contratado, ou se o Contratante desistir depois da confirmação, são devidas as parcelas vencidas até aquela etapa.</p>
+        <p><strong>6. Fora do objeto.</strong> Recursos dirigidos ao Supremo Tribunal Federal; cumprimento ou execução da decisão homologada perante a Justiça Federal; ações de guarda, alimentos, partilha ou inventário no Brasil; registro do casamento no Brasil; comparecimento a cartório para a averbação; tradução de documentos. Esses serviços dependem de contratação própria.</p>
+        <p><strong>7. Despesas.</strong> Custas do Superior Tribunal de Justiça, apostilas, tradução juramentada, certidões, despesas de carta rogatória (inclusive as cobradas pelo país de destino) e emolumentos de cartório são pagos pelo Contratante diretamente a quem os cobra. A estimativa é informada na consulta de viabilidade. As custas são fixadas pelo tribunal e podem ser alteradas; a Lei nº 15.498/2026 prevê novos valores a partir de 1º de janeiro de 2027.</p>
+        <p><strong>8. Honorários de sucumbência.</strong> Os honorários que o tribunal eventualmente fixar contra a outra parte pertencem ao advogado (Lei nº 8.906/1994, art. 23) e não se compensam com os honorários deste contrato.</p>
+        <p><strong>9. Procuração.</strong> O pedido exige procuração, que o Contratante assina após a confirmação, por assinatura eletrônica ou por outra forma aceita pelo tribunal.</p>
+        <p><strong>10. Obrigações do Contratante.</strong> Fornecer documentos verdadeiros e completos; informar qualquer processo no Brasil sobre divórcio, guarda, alimentos ou bens das mesmas partes; informar o endereço conhecido da outra parte; manter atualizados os seus dados de contato.</p>
+        <p><strong>11. Natureza.</strong> Obrigação de meio. A homologação depende de decisão do Superior Tribunal de Justiça e pode ser parcial. Não há garantia de resultado nem de prazo.</p>
+        <p><strong>12. Sigilo, dados pessoais e tecnologia.</strong> As informações são protegidas pelo sigilo profissional e tratadas conforme a Política de Privacidade do site. O Contratante está ciente de que ferramentas de inteligência artificial podem ser usadas para organizar documentos e preparar rascunhos, sempre com revisão do advogado, que responde pelo trabalho, e pode pedir, por e-mail, que elas não sejam usadas no seu caso.</p>
+        <p><strong>13. Aceite eletrônico.</strong> As partes admitem como válida a contratação por aceite eletrônico neste site, com registro de data, hora e dados do Contratante (Medida Provisória nº 2.200-2/2001, art. 10, § 2º).</p>
+        <p><strong>14. Foro.</strong> O do domicílio do Contratante no Brasil. Se o Contratante residir no exterior, o de Porto Alegre/RS, sem prejuízo dos direitos que a lei lhe assegure.</p>
+        <p class="muted">Versão 2026-10-06.</p>
+      </div>
+
+      <form class="form" id="contratacao" name="contratacao" method="POST" action="/" data-netlify="true" netlify-honeypot="site" novalidate>
+        <input type="hidden" name="form-name" value="contratacao">
+        <input type="hidden" name="protocolo" id="k-protocolo">
+        <input type="hidden" name="produto" id="k-produto">
+        <input type="hidden" name="valor_total" id="k-total">
+        <input type="hidden" name="valor_agora" id="k-agora">
+        <input type="hidden" name="versao_contrato" id="k-versao">
+        <input type="hidden" name="nome" id="k-nome">
+        <input type="hidden" name="email" id="k-email">
+        <input type="hidden" name="aceito_em" id="k-quando">
+        <input type="hidden" name="documento_tipo" id="k-doctipo">
+        <p class="hp" aria-hidden="true"><label>Não preencha este campo <input name="site" tabindex="-1" autocomplete="off"></label></p>
+        <div class="field">
+          <label for="k-cpf" id="l-cpf">CPF do contratante</label>
+          <input type="text" id="k-cpf" name="cpf" inputmode="numeric" autocomplete="off" maxlength="14" required aria-describedby="e-cpf h-cpf">
+          <p class="hint" id="h-cpf">Usado apenas para identificar você no contrato.</p>
+          <p class="err" id="e-cpf" hidden>Informe um CPF válido.</p>
+        </div>
+        <label class="check">
+          <input type="checkbox" id="k-semcpf" name="sem_cpf" value="sim">
+          <span>Não tenho CPF. Vou informar o número do passaporte.</span>
+        </label>
+        <div class="field">
+          <label for="k-end">Endereço completo, com país</label>
+          <input type="text" id="k-end" name="endereco" autocomplete="street-address" required aria-describedby="e-end">
+          <p class="err" id="e-end" hidden>Informe o seu endereço (rua, número, cidade e país).</p>
+        </div>
+        <label class="check">
+          <input type="checkbox" name="aceite" id="k-aceite" value="sim" required aria-describedby="e-aceite">
+          <span>Li e aceito o contrato acima, no valor de <strong id="k-resumo"></strong>.</span>
+        </label>
+        <p class="err" id="e-aceite" hidden>É preciso aceitar o contrato para continuar.</p>
+        <p class="err" id="e-contratar" role="alert" hidden></p>
+        <div class="wz-nav">
+          <button class="btn link" type="button" id="voltar-proposta">← Voltar à proposta</button>
+          <button class="btn" type="submit" id="contratar">Aceitar e ir para o pagamento</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Pagamento -->
+    <div class="wz-step" id="wz-pagamento" hidden>
+      <div class="verdict ok">
+        <span class="pill">Contrato aceito</span>
+        <h2 id="pag-title" tabindex="-1">Falta só o pagamento.</h2>
+        <p>Protocolo <strong class="prot"></strong> · <span id="pag-produto"></span> · <strong id="pag-valor"></strong></p>
+      </div>
+      <div id="pag-pix" hidden>
+        <h3>Pix</h3>
+        <p>Copie o código abaixo e cole no aplicativo do seu banco, na opção "Pix copia e cola". O valor já vem preenchido.</p>
+        <label class="sr-only" for="pix-code">Código Pix copia e cola</label>
+        <textarea class="pixcode" id="pix-code" readonly rows="4"></textarea>
+        <div class="btns"><button class="btn" type="button" id="pix-copiar">Copiar código Pix</button></div>
+      </div>
+      <div id="pag-cartao" hidden>
+        <h3>Cartão de crédito</h3>
+        <p>O pagamento é feito na página da operadora. Informe o protocolo <strong class="prot"></strong> se for solicitado.</p>
+        <div class="btns"><a class="btn ghost" id="cartao-link" href="#" target="_blank" rel="noopener">Pagar com cartão</a></div>
+      </div>
+      <div class="note" id="pag-email" hidden>
+        <p>As instruções de pagamento serão enviadas ao seu e-mail.</p>
+      </div>
+      <h3>O que acontece agora</h3>
+      <ol class="steps" id="pag-passos"></ol>
+      <p class="muted">A confirmação do pagamento é feita em horário comercial e comunicada por e-mail. Dúvidas: <a href="mailto:alexandre@dickelcanova.com">alexandre@dickelcanova.com</a>, informando o protocolo.</p>
+    </div>
+
+    <!-- Falar com o advogado -->
+    <div class="wz-step" id="wz-falar" hidden>
+      <p class="wz-section">Contato</p>
+      <h2 class="wz-q" id="falar-title" tabindex="-1">Falar com o advogado</h2>
+      <p>Seus dados e documentos já foram recebidos sob o protocolo <strong class="prot"></strong>. Escreva dizendo o que quer esclarecer; não é preciso repetir as informações.</p>
+      <div class="btns">
+        <a class="btn" id="falar-email" href="mailto:alexandre@dickelcanova.com">Escrever por e-mail</a>
+        <a class="btn ghost" id="falar-whats" href="#" rel="noopener" hidden>WhatsApp</a>
+        <button class="btn link" type="button" id="falar-voltar">← Voltar à proposta</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <p><strong>Homologação de Sentença Estrangeira</strong></p>
+        <p>Homologação, no Superior Tribunal de Justiça, de sentenças proferidas no exterior, para que produzam efeitos no Brasil. Atendimento à distância por advogado inscrito na OAB.</p>
+      </div>
+      <div>
+        <p><strong>Conteúdo</strong></p>
+        <ul>
+          <li><a href="homologacao.html">Como funciona</a></li>
+          <li><a href="artigos.html">Artigos</a></li>
+          <li><a href="perguntas.html">Perguntas frequentes</a></li>
+          <li><a href="diagnostico.html">Diagnóstico</a></li>
+        </ul>
+      </div>
+      <div>
+        <p><strong>Informações legais</strong></p>
+        <ul>
+          <li><a href="privacidade.html">Política de privacidade</a></li>
+          <li><a href="termos.html">Termos de uso</a></li>
+          <li><a href="acessibilidade.html">Acessibilidade</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="legal-line">Responsável técnico: Alexandre Dickel Canova, advogado, OAB/RS 127.163, Porto Alegre/RS. Conteúdo de caráter exclusivamente informativo, nos termos do Provimento nº 205/2021 do Conselho Federal da OAB. Não constitui consulta jurídica nem promessa de resultado. Este site não usa cookies nem rastreadores. Atualizado em 2026-10-06.</p>
+  </div>
+</footer>
+<script src="assets/js/site.js" defer></script>
+<script src="assets/js/config.js" defer></script>
+<script src="assets/js/diagnostico.js" defer></script>
+</body>
+</html>
